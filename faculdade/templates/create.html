@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Livro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Novo Livro</h1>
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form method="post">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="author">Autor:</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="price">Preço:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <label for="category">Categoria:</label>
+            <input type="text" id="category" name="category" required>
+
+            <button type="submit" class="btn">Salvar</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="btn">Voltar</a>
+    </div>
+</body>
+</html>

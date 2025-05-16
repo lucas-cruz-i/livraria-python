@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Livraria Python Grupo 4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center; font-family:Tagesschrift", sans-serif>Livraria Sonhos no Papel</h1>
+
+        <form method="get" action="{{ url_for('index') }}">
+            <input type="text" name="search" placeholder="Buscar livros..." value="{{ request.args.get('search', '') }}">
+            <button type="submit">Buscar</button>
+
+            <div class="Container-categoria">
+            <select name="category">
+                <option value="">Todas as categorias</option>
+                {% for cat in categories %}
+                <option value="{{ cat }}"> {% if request.args.get('category') == cat %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+
+                <button type="submit" class="btn-filter">Filtrar</button>
+            </div>
+
+
+        </form>
+
+        <a href="{{ url_for('create') }}">Adicionar Novo Livro</a>
+
+    <ul>
+    {% for book in books %}
+        <li style="margin-bottom: 15px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 40px">
+                <div>
+                    <strong>{{ book.title }}</strong> <br> <br>
+                    <strong>- Autor: {{ book.author }} - </strong>
+                     <span class="book-category">Categoria: {{ book.category }} - </span>
+                    <span class="book-price"> R$ {{ '%.2f' % book.price }}</span>
+                </div>
+                <div>
+                    <a href="{{ url_for('edit', id=book.id) }}" class="btn btn-edit">Editar</a>
+                    <form action="{{ url_for('delete', id=book.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-delete">Deletar</button>
+                    </form>
+                </div>
+            </div>
+        </li>
+    {% else %}
+        <li>Nenhum livro encontrado.</li>
+    {% endfor %}
+</ul>
+
+
+    </div>
+</body>
+</html>

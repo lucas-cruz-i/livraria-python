@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Livro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Livro</h1>
+        <form method="post">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" value="{{ book.title }}" required>
+
+            <label for="author">Autor:</label>
+            <input type="text" id="author" name="author" value="{{ book.author }}" required>
+
+            <label for="price">Preço:</label>
+            <input type="number" id="price" name="price" class="price-field" value="{{ '%.2f' % book.price }}" step="0.01" required>
+
+            <label for="category">Categoria:</label>
+            <input type="text" id="category" name="category" value="{{ book.category }}" required>
+
+
+            <button type="submit">Atualizar</button>
+
+        </form>
+        <a href="{{ url_for('index') }}">Voltar</a>
+    </div>
+</body>
+</html>
