@@ -47,4 +47,4 @@ Se quiser entrar em contato ou saber mais sobre o projeto:
 
 ## 📄 Licença
 
-A maioria dos projetos aqui são livres para estudo e aprendizado. Caso queira usar algo em produção ou com fins comerciais, entre em contato.
+A maioria dos projetos aqui são livres para estudo e aprendizado. Caso queira usar algo em produção ou com fins comerciais, entre em contato 😉.
